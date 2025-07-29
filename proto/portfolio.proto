@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+package portfolio;
+
+option go_package = "portfolio-service/proto;portfolio";
+
+service PortfolioService {
+  rpc CreateNewPortfolio (CreateNewPortfolioRequest) returns (CreateNewPortfolioResponse) {
+    option (google.api.http) = {
+      post: "/portfolios"
+      body: "*"
+    };
+  };
+
+  rpc GetPortfolioContentById (GetPortfolioContentByIdRequest) returns (GetPortfolioContentByIdResponse) {
+    option (google.api.http) = {
+      get: "/portfolio/{id}"
+    };
+  };
+
+  rpc UpsertAsset (UpsertAssetRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/portfolios/{portfolio_id}/asset"
+      body: "*"
+    };
+  };
+
+  rpc DeleteAsset (DeleteAssetRequest) returns (google.protobuf.Empty) {
+	option (google.api.http) = {
+	  delete: "/portfolios/{portfolio_id}/asset/{symbol}"
+	};
+  };
+  
+  
+
+  rpc GetAllPortfolios (GetAllPortfoliosRequest) returns (GetAllPortfoliosResponse) {
+    option (google.api.http) = {
+      get: "/portfolios"
+    };
+  };
+
+  rpc GetPortfolioHistory (GetPortfolioHistoryRequest) returns (GetPortfolioHistoryResponse) {
+    option (google.api.http) = {
+      get: "/portfolio/{id}/history"
+    };
+  };
+
+  rpc GetPublicPortfolios (GetPublicPortfoliosRequest) returns (GetPublicPortfoliosResponse) {
+    option (google.api.http) = {
+      get: "/portfolio/public/{user_id}"
+    };
+  };
+}
+
+// ------------------- Messages ---------------------
+
+message CreateNewPortfolioRequest {
+  int32 user_id=1;
+  string name = 2;
+  google.protobuf.BoolValue  is_public = 3;
+}
+
+message CreateNewPortfolioResponse {
+  int32 id = 1;
+  string name = 2;
+  google.protobuf.BoolValue  is_public = 3;
+}
+
+message GetPortfolioContentByIdRequest {
+  int32 id = 1;
+}
+
+message GetPortfolioContentByIdResponse {
+  map<string, double> assets = 1;
+}
+
+message UpsertAssetRequest {
+  int32 portfolio_id = 1;
+  string symbol = 2;
+  double amount = 3;
+}
+
+message DeleteAssetRequest {
+  int32 portfolio_id = 1;
+  string symbol = 2;
+}
+
+message AllUserPortfolio {
+  int32 id = 1;
+  string name = 2;
+  google.protobuf.BoolValue is_public = 3;
+}
+
+message GetAllPortfoliosRequest{
+  int32 user_id = 1;
+}
+
+message GetAllPortfoliosResponse {
+  repeated AllUserPortfolio portfolios = 1;
+}
+
+message GetPortfolioHistoryRequest {
+  int32 id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message PricePoint {
+  string timestamp = 1;
+  double price = 2;
+}
+
+message PricePoints {
+  repeated PricePoint points = 1;
+}
+
+message GetPortfolioHistoryResponse {
+  map<string, PricePoints> history = 1;
+}
+
+message GetPublicPortfoliosRequest {
+  int32 user_id = 1;
+}
+
+message PublicPortfolio {
+  int32 portfolio_id = 1;
+  string name = 2;
+  map<string, double> assets = 3;
+}
+
+message GetPublicPortfoliosResponse {
+  repeated PublicPortfolio portfolios = 1;
+}

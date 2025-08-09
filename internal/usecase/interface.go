@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"context"
-	gen "portfolio-service/gen"
+	portfolio "portfolio-service/gen"
 	"portfolio-service/internal/entity"
 	"portfolio-service/internal/repository"
 )
@@ -21,8 +21,11 @@ type PortfolioInterface interface {
 	UpsertAsset(ctx context.Context, portfolioID int, symbol string, amount float64) error
 	DeleteAsset(ctx context.Context, portfolioID int, symbol string) error
 	GetAllPortfolios(ctx context.Context, userID int) ([]entity.Portfolio, error)
-	GetPortfolioHistory()
-	GetOtherUserPublicPortfolios(ctx context.Context, userID int) ([]*gen.PublicPortfolio, error)
+	GetPortfolioHistory(ctx context.Context, portfolioID int, page, pageSize int) (map[string]*portfolio.PricePoints, error)
+	GetOtherUserPublicPortfolios(ctx context.Context, userID int) ([]*portfolio.PublicPortfolio, error)
+	PortfolioBelongsToUser(ctx context.Context, portfolioID, userID int) (bool, error)
+	GetPortfolioByID(ctx context.Context, id int) (*entity.Portfolio, error)
+	GetPortfolioProfit(ctx context.Context, portfolioID int) ([]*portfolio.AssetProfit, error)
 }
 
 func (uc *PortfolioUsecase) CreateNewPortfolio(ctx context.Context, userID int, name string, isPublic bool) (int, string, bool, error) {
@@ -45,9 +48,22 @@ func (uc *PortfolioUsecase) GetAllPortfolios(ctx context.Context, userID int) ([
 	return uc.repo.GetAllPortfolios(ctx, userID)
 }
 
-func (uc *PortfolioUsecase) GetPortfolioHistory() {
+func (uc *PortfolioUsecase) GetPortfolioHistory(ctx context.Context, portfolioID int, page, pageSize int) (map[string]*portfolio.PricePoints, error) {
+	return uc.repo.GetPortfolioHistory(ctx, portfolioID, page, pageSize)
 }
 
-func (uc *PortfolioUsecase) GetOtherUserPublicPortfolios(ctx context.Context, userID int) ([]*gen.PublicPortfolio, error) {
+func (uc *PortfolioUsecase) GetOtherUserPublicPortfolios(ctx context.Context, userID int) ([]*portfolio.PublicPortfolio, error) {
 	return uc.repo.GetOtherUserPublicPortfolios(ctx, userID)
+}
+
+func (uc *PortfolioUsecase) PortfolioBelongsToUser(ctx context.Context, portfolioID, userID int) (bool, error) {
+	return uc.repo.PortfolioBelongsToUser(ctx, portfolioID, userID)
+}
+
+func (uc *PortfolioUsecase) GetPortfolioByID(ctx context.Context, id int) (*entity.Portfolio, error) {
+	return uc.repo.GetPortfolioByID(ctx, id)
+}
+
+func (uc *PortfolioUsecase) GetPortfolioProfit(ctx context.Context, portfolioID int) ([]*portfolio.AssetProfit, error) {
+	return uc.repo.GetPortfolioProfit(ctx, portfolioID)
 }

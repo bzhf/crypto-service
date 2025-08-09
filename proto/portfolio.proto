@@ -35,9 +35,13 @@ service PortfolioService {
 	};
   };
   
-  
+  rpc GetPortfolioProfit(GetPortfolioProfitRequest) returns (GetPortfolioProfitResponse){
+    option (google.api.http) = {
+      get: "/portfolios/{id}/profit"
+    };
+  };
 
-  rpc GetAllPortfolios (GetAllPortfoliosRequest) returns (GetAllPortfoliosResponse) {
+  rpc GetAllPortfolios (google.protobuf.Empty) returns (GetAllPortfoliosResponse) {
     option (google.api.http) = {
       get: "/portfolios"
     };
@@ -56,12 +60,11 @@ service PortfolioService {
   };
 }
 
-// ------------------- Messages ---------------------
+
 
 message CreateNewPortfolioRequest {
-  int32 user_id=1;
-  string name = 2;
-  google.protobuf.BoolValue  is_public = 3;
+  string name = 1;
+  google.protobuf.BoolValue  is_public = 2;
 }
 
 message CreateNewPortfolioResponse {
@@ -95,9 +98,6 @@ message AllUserPortfolio {
   google.protobuf.BoolValue is_public = 3;
 }
 
-message GetAllPortfoliosRequest{
-  int32 user_id = 1;
-}
 
 message GetAllPortfoliosResponse {
   repeated AllUserPortfolio portfolios = 1;
@@ -111,7 +111,7 @@ message GetPortfolioHistoryRequest {
 
 message PricePoint {
   string timestamp = 1;
-  double price = 2;
+  double value = 2;
 }
 
 message PricePoints {
@@ -134,4 +134,21 @@ message PublicPortfolio {
 
 message GetPublicPortfoliosResponse {
   repeated PublicPortfolio portfolios = 1;
+}
+
+message GetPortfolioProfitRequest {
+  int64 id = 1;
+}
+
+message AssetProfit {
+  string symbol = 1;
+  double amount = 2;
+  double invested = 3;
+  double current_price = 4;
+  double current_value = 5;
+  double profit = 6;
+}
+
+message GetPortfolioProfitResponse {
+  repeated AssetProfit assets = 1;
 }

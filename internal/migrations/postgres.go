@@ -13,11 +13,12 @@ import (
 	"github.com/golang-migrate/migrate/v4/source/iofs"
 )
 
+//go:embed sql/postgres/*.sql
 var migrationsFS embed.FS
 
-func RunMigrations(ctx context.Context) error {
+func RunPostgresMigrations(ctx context.Context) error {
 	dsn := fmt.Sprintf(
-		"pgx5://%s:%s@%s:%s/%s?sslmode=disable",
+		"pgx5://%s:%s@%s:%s/%s",
 		config.AppConfig.DBUser,
 		config.AppConfig.DBPassword,
 		config.AppConfig.DBHost,
@@ -25,7 +26,14 @@ func RunMigrations(ctx context.Context) error {
 		config.AppConfig.DBName,
 	)
 	l := logger.FromContext(ctx)
-	sourceDriver, err := iofs.New(migrationsFS, "migrations")
+	files, err := migrationsFS.ReadDir("sql/postgres")
+	if err != nil {
+		return fmt.Errorf("failed to read embedded files: %w", err)
+	}
+	for _, file := range files {
+		fmt.Printf("Embedded file: %s\n", file.Name())
+	}
+	sourceDriver, err := iofs.New(migrationsFS, "sql/postgres")
 	if err != nil {
 		return fmt.Errorf("failed to create source driver: %w", err)
 	}

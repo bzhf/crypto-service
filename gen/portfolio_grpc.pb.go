@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.21.12
-// source: proto/portfolio.proto
+// source: portfolio.proto
 
 package portfolio
 
@@ -24,6 +24,7 @@ const (
 	PortfolioService_GetPortfolioContentById_FullMethodName = "/portfolio.PortfolioService/GetPortfolioContentById"
 	PortfolioService_UpsertAsset_FullMethodName             = "/portfolio.PortfolioService/UpsertAsset"
 	PortfolioService_DeleteAsset_FullMethodName             = "/portfolio.PortfolioService/DeleteAsset"
+	PortfolioService_GetPortfolioProfit_FullMethodName      = "/portfolio.PortfolioService/GetPortfolioProfit"
 	PortfolioService_GetAllPortfolios_FullMethodName        = "/portfolio.PortfolioService/GetAllPortfolios"
 	PortfolioService_GetPortfolioHistory_FullMethodName     = "/portfolio.PortfolioService/GetPortfolioHistory"
 	PortfolioService_GetPublicPortfolios_FullMethodName     = "/portfolio.PortfolioService/GetPublicPortfolios"
@@ -37,7 +38,8 @@ type PortfolioServiceClient interface {
 	GetPortfolioContentById(ctx context.Context, in *GetPortfolioContentByIdRequest, opts ...grpc.CallOption) (*GetPortfolioContentByIdResponse, error)
 	UpsertAsset(ctx context.Context, in *UpsertAssetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteAsset(ctx context.Context, in *DeleteAssetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	GetAllPortfolios(ctx context.Context, in *GetAllPortfoliosRequest, opts ...grpc.CallOption) (*GetAllPortfoliosResponse, error)
+	GetPortfolioProfit(ctx context.Context, in *GetPortfolioProfitRequest, opts ...grpc.CallOption) (*GetPortfolioProfitResponse, error)
+	GetAllPortfolios(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPortfoliosResponse, error)
 	GetPortfolioHistory(ctx context.Context, in *GetPortfolioHistoryRequest, opts ...grpc.CallOption) (*GetPortfolioHistoryResponse, error)
 	GetPublicPortfolios(ctx context.Context, in *GetPublicPortfoliosRequest, opts ...grpc.CallOption) (*GetPublicPortfoliosResponse, error)
 }
@@ -90,7 +92,17 @@ func (c *portfolioServiceClient) DeleteAsset(ctx context.Context, in *DeleteAsse
 	return out, nil
 }
 
-func (c *portfolioServiceClient) GetAllPortfolios(ctx context.Context, in *GetAllPortfoliosRequest, opts ...grpc.CallOption) (*GetAllPortfoliosResponse, error) {
+func (c *portfolioServiceClient) GetPortfolioProfit(ctx context.Context, in *GetPortfolioProfitRequest, opts ...grpc.CallOption) (*GetPortfolioProfitResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPortfolioProfitResponse)
+	err := c.cc.Invoke(ctx, PortfolioService_GetPortfolioProfit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *portfolioServiceClient) GetAllPortfolios(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPortfoliosResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAllPortfoliosResponse)
 	err := c.cc.Invoke(ctx, PortfolioService_GetAllPortfolios_FullMethodName, in, out, cOpts...)
@@ -128,7 +140,8 @@ type PortfolioServiceServer interface {
 	GetPortfolioContentById(context.Context, *GetPortfolioContentByIdRequest) (*GetPortfolioContentByIdResponse, error)
 	UpsertAsset(context.Context, *UpsertAssetRequest) (*emptypb.Empty, error)
 	DeleteAsset(context.Context, *DeleteAssetRequest) (*emptypb.Empty, error)
-	GetAllPortfolios(context.Context, *GetAllPortfoliosRequest) (*GetAllPortfoliosResponse, error)
+	GetPortfolioProfit(context.Context, *GetPortfolioProfitRequest) (*GetPortfolioProfitResponse, error)
+	GetAllPortfolios(context.Context, *emptypb.Empty) (*GetAllPortfoliosResponse, error)
 	GetPortfolioHistory(context.Context, *GetPortfolioHistoryRequest) (*GetPortfolioHistoryResponse, error)
 	GetPublicPortfolios(context.Context, *GetPublicPortfoliosRequest) (*GetPublicPortfoliosResponse, error)
 	mustEmbedUnimplementedPortfolioServiceServer()
@@ -153,7 +166,10 @@ func (UnimplementedPortfolioServiceServer) UpsertAsset(context.Context, *UpsertA
 func (UnimplementedPortfolioServiceServer) DeleteAsset(context.Context, *DeleteAssetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAsset not implemented")
 }
-func (UnimplementedPortfolioServiceServer) GetAllPortfolios(context.Context, *GetAllPortfoliosRequest) (*GetAllPortfoliosResponse, error) {
+func (UnimplementedPortfolioServiceServer) GetPortfolioProfit(context.Context, *GetPortfolioProfitRequest) (*GetPortfolioProfitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPortfolioProfit not implemented")
+}
+func (UnimplementedPortfolioServiceServer) GetAllPortfolios(context.Context, *emptypb.Empty) (*GetAllPortfoliosResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPortfolios not implemented")
 }
 func (UnimplementedPortfolioServiceServer) GetPortfolioHistory(context.Context, *GetPortfolioHistoryRequest) (*GetPortfolioHistoryResponse, error) {
@@ -255,8 +271,26 @@ func _PortfolioService_DeleteAsset_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PortfolioService_GetPortfolioProfit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPortfolioProfitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PortfolioServiceServer).GetPortfolioProfit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PortfolioService_GetPortfolioProfit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PortfolioServiceServer).GetPortfolioProfit(ctx, req.(*GetPortfolioProfitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _PortfolioService_GetAllPortfolios_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllPortfoliosRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -268,7 +302,7 @@ func _PortfolioService_GetAllPortfolios_Handler(srv interface{}, ctx context.Con
 		FullMethod: PortfolioService_GetAllPortfolios_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PortfolioServiceServer).GetAllPortfolios(ctx, req.(*GetAllPortfoliosRequest))
+		return srv.(PortfolioServiceServer).GetAllPortfolios(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -333,6 +367,10 @@ var PortfolioService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PortfolioService_DeleteAsset_Handler,
 		},
 		{
+			MethodName: "GetPortfolioProfit",
+			Handler:    _PortfolioService_GetPortfolioProfit_Handler,
+		},
+		{
 			MethodName: "GetAllPortfolios",
 			Handler:    _PortfolioService_GetAllPortfolios_Handler,
 		},
@@ -346,5 +384,5 @@ var PortfolioService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/portfolio.proto",
+	Metadata: "portfolio.proto",
 }

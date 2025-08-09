@@ -21,7 +21,7 @@ const (
 
 func NewPostgresDB(ctx context.Context) (*pgxpool.Pool, error) {
 	dsn := fmt.Sprintf(
-		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disabled",
+		"host=%s port=%s user=%s password=%s dbname=%s",
 		config.AppConfig.DBHost,
 		config.AppConfig.DBPort,
 		config.AppConfig.DBUser,

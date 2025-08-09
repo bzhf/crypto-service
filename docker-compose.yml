@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${GRPC_PORT}:${GRPC_PORT}"
+      - "${REST_PORT}:${REST_PORT}"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - clickhouse
+      - redis
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.3
+    restart: always
+    ports:
+      - "${CLICKHOUSE_PORT}:${CLICKHOUSE_PORT}"
+      - "8123:8123" # HTTP интерфейс обычно не меняется, оставил хардкод
+    environment:
+      CLICKHOUSE_DB: ${CLICKHOUSE_DATABASE}
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+
+  redis:
+    image: redis:7
+    restart: always
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}"]
+
+volumes:
+  postgres_data:
+  clickhouse_data:

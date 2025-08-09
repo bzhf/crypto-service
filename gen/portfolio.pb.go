@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.21.12
-// source: proto/portfolio.proto
+// source: portfolio.proto
 
 package portfolio
 
@@ -26,16 +26,15 @@ const (
 
 type CreateNewPortfolioRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	IsPublic      *wrapperspb.BoolValue  `protobuf:"bytes,3,opt,name=is_public,json=isPublic,proto3" json:"is_public,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	IsPublic      *wrapperspb.BoolValue  `protobuf:"bytes,2,opt,name=is_public,json=isPublic,proto3" json:"is_public,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateNewPortfolioRequest) Reset() {
 	*x = CreateNewPortfolioRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[0]
+	mi := &file_portfolio_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +46,7 @@ func (x *CreateNewPortfolioRequest) String() string {
 func (*CreateNewPortfolioRequest) ProtoMessage() {}
 
 func (x *CreateNewPortfolioRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[0]
+	mi := &file_portfolio_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,14 +59,7 @@ func (x *CreateNewPortfolioRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewPortfolioRequest.ProtoReflect.Descriptor instead.
 func (*CreateNewPortfolioRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateNewPortfolioRequest) GetUserId() int32 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
+	return file_portfolio_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateNewPortfolioRequest) GetName() string {
@@ -95,7 +87,7 @@ type CreateNewPortfolioResponse struct {
 
 func (x *CreateNewPortfolioResponse) Reset() {
 	*x = CreateNewPortfolioResponse{}
-	mi := &file_proto_portfolio_proto_msgTypes[1]
+	mi := &file_portfolio_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -107,7 +99,7 @@ func (x *CreateNewPortfolioResponse) String() string {
 func (*CreateNewPortfolioResponse) ProtoMessage() {}
 
 func (x *CreateNewPortfolioResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[1]
+	mi := &file_portfolio_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +112,7 @@ func (x *CreateNewPortfolioResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewPortfolioResponse.ProtoReflect.Descriptor instead.
 func (*CreateNewPortfolioResponse) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{1}
+	return file_portfolio_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateNewPortfolioResponse) GetId() int32 {
@@ -153,7 +145,7 @@ type GetPortfolioContentByIdRequest struct {
 
 func (x *GetPortfolioContentByIdRequest) Reset() {
 	*x = GetPortfolioContentByIdRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[2]
+	mi := &file_portfolio_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -165,7 +157,7 @@ func (x *GetPortfolioContentByIdRequest) String() string {
 func (*GetPortfolioContentByIdRequest) ProtoMessage() {}
 
 func (x *GetPortfolioContentByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[2]
+	mi := &file_portfolio_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -178,7 +170,7 @@ func (x *GetPortfolioContentByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPortfolioContentByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetPortfolioContentByIdRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{2}
+	return file_portfolio_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetPortfolioContentByIdRequest) GetId() int32 {
@@ -197,7 +189,7 @@ type GetPortfolioContentByIdResponse struct {
 
 func (x *GetPortfolioContentByIdResponse) Reset() {
 	*x = GetPortfolioContentByIdResponse{}
-	mi := &file_proto_portfolio_proto_msgTypes[3]
+	mi := &file_portfolio_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -209,7 +201,7 @@ func (x *GetPortfolioContentByIdResponse) String() string {
 func (*GetPortfolioContentByIdResponse) ProtoMessage() {}
 
 func (x *GetPortfolioContentByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[3]
+	mi := &file_portfolio_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -222,7 +214,7 @@ func (x *GetPortfolioContentByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPortfolioContentByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetPortfolioContentByIdResponse) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{3}
+	return file_portfolio_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetPortfolioContentByIdResponse) GetAssets() map[string]float64 {
@@ -243,7 +235,7 @@ type UpsertAssetRequest struct {
 
 func (x *UpsertAssetRequest) Reset() {
 	*x = UpsertAssetRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[4]
+	mi := &file_portfolio_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -255,7 +247,7 @@ func (x *UpsertAssetRequest) String() string {
 func (*UpsertAssetRequest) ProtoMessage() {}
 
 func (x *UpsertAssetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[4]
+	mi := &file_portfolio_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -268,7 +260,7 @@ func (x *UpsertAssetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpsertAssetRequest.ProtoReflect.Descriptor instead.
 func (*UpsertAssetRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{4}
+	return file_portfolio_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpsertAssetRequest) GetPortfolioId() int32 {
@@ -302,7 +294,7 @@ type DeleteAssetRequest struct {
 
 func (x *DeleteAssetRequest) Reset() {
 	*x = DeleteAssetRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[5]
+	mi := &file_portfolio_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +306,7 @@ func (x *DeleteAssetRequest) String() string {
 func (*DeleteAssetRequest) ProtoMessage() {}
 
 func (x *DeleteAssetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[5]
+	mi := &file_portfolio_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +319,7 @@ func (x *DeleteAssetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAssetRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAssetRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{5}
+	return file_portfolio_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteAssetRequest) GetPortfolioId() int32 {
@@ -355,7 +347,7 @@ type AllUserPortfolio struct {
 
 func (x *AllUserPortfolio) Reset() {
 	*x = AllUserPortfolio{}
-	mi := &file_proto_portfolio_proto_msgTypes[6]
+	mi := &file_portfolio_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -367,7 +359,7 @@ func (x *AllUserPortfolio) String() string {
 func (*AllUserPortfolio) ProtoMessage() {}
 
 func (x *AllUserPortfolio) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[6]
+	mi := &file_portfolio_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -380,7 +372,7 @@ func (x *AllUserPortfolio) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AllUserPortfolio.ProtoReflect.Descriptor instead.
 func (*AllUserPortfolio) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{6}
+	return file_portfolio_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AllUserPortfolio) GetId() int32 {
@@ -404,50 +396,6 @@ func (x *AllUserPortfolio) GetIsPublic() *wrapperspb.BoolValue {
 	return nil
 }
 
-type GetAllPortfoliosRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllPortfoliosRequest) Reset() {
-	*x = GetAllPortfoliosRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllPortfoliosRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllPortfoliosRequest) ProtoMessage() {}
-
-func (x *GetAllPortfoliosRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllPortfoliosRequest.ProtoReflect.Descriptor instead.
-func (*GetAllPortfoliosRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *GetAllPortfoliosRequest) GetUserId() int32 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
-}
-
 type GetAllPortfoliosResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Portfolios    []*AllUserPortfolio    `protobuf:"bytes,1,rep,name=portfolios,proto3" json:"portfolios,omitempty"`
@@ -457,7 +405,7 @@ type GetAllPortfoliosResponse struct {
 
 func (x *GetAllPortfoliosResponse) Reset() {
 	*x = GetAllPortfoliosResponse{}
-	mi := &file_proto_portfolio_proto_msgTypes[8]
+	mi := &file_portfolio_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -469,7 +417,7 @@ func (x *GetAllPortfoliosResponse) String() string {
 func (*GetAllPortfoliosResponse) ProtoMessage() {}
 
 func (x *GetAllPortfoliosResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[8]
+	mi := &file_portfolio_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +430,7 @@ func (x *GetAllPortfoliosResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPortfoliosResponse.ProtoReflect.Descriptor instead.
 func (*GetAllPortfoliosResponse) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{8}
+	return file_portfolio_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetAllPortfoliosResponse) GetPortfolios() []*AllUserPortfolio {
@@ -503,7 +451,7 @@ type GetPortfolioHistoryRequest struct {
 
 func (x *GetPortfolioHistoryRequest) Reset() {
 	*x = GetPortfolioHistoryRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[9]
+	mi := &file_portfolio_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -515,7 +463,7 @@ func (x *GetPortfolioHistoryRequest) String() string {
 func (*GetPortfolioHistoryRequest) ProtoMessage() {}
 
 func (x *GetPortfolioHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[9]
+	mi := &file_portfolio_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -528,7 +476,7 @@ func (x *GetPortfolioHistoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPortfolioHistoryRequest.ProtoReflect.Descriptor instead.
 func (*GetPortfolioHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{9}
+	return file_portfolio_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetPortfolioHistoryRequest) GetId() int32 {
@@ -555,14 +503,14 @@ func (x *GetPortfolioHistoryRequest) GetPageSize() int32 {
 type PricePoint struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Timestamp     string                 `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	Price         float64                `protobuf:"fixed64,2,opt,name=price,proto3" json:"price,omitempty"`
+	Value         float64                `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PricePoint) Reset() {
 	*x = PricePoint{}
-	mi := &file_proto_portfolio_proto_msgTypes[10]
+	mi := &file_portfolio_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -574,7 +522,7 @@ func (x *PricePoint) String() string {
 func (*PricePoint) ProtoMessage() {}
 
 func (x *PricePoint) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[10]
+	mi := &file_portfolio_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -587,7 +535,7 @@ func (x *PricePoint) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PricePoint.ProtoReflect.Descriptor instead.
 func (*PricePoint) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{10}
+	return file_portfolio_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PricePoint) GetTimestamp() string {
@@ -597,9 +545,9 @@ func (x *PricePoint) GetTimestamp() string {
 	return ""
 }
 
-func (x *PricePoint) GetPrice() float64 {
+func (x *PricePoint) GetValue() float64 {
 	if x != nil {
-		return x.Price
+		return x.Value
 	}
 	return 0
 }
@@ -613,7 +561,7 @@ type PricePoints struct {
 
 func (x *PricePoints) Reset() {
 	*x = PricePoints{}
-	mi := &file_proto_portfolio_proto_msgTypes[11]
+	mi := &file_portfolio_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -625,7 +573,7 @@ func (x *PricePoints) String() string {
 func (*PricePoints) ProtoMessage() {}
 
 func (x *PricePoints) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[11]
+	mi := &file_portfolio_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -638,7 +586,7 @@ func (x *PricePoints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PricePoints.ProtoReflect.Descriptor instead.
 func (*PricePoints) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{11}
+	return file_portfolio_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PricePoints) GetPoints() []*PricePoint {
@@ -657,7 +605,7 @@ type GetPortfolioHistoryResponse struct {
 
 func (x *GetPortfolioHistoryResponse) Reset() {
 	*x = GetPortfolioHistoryResponse{}
-	mi := &file_proto_portfolio_proto_msgTypes[12]
+	mi := &file_portfolio_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -669,7 +617,7 @@ func (x *GetPortfolioHistoryResponse) String() string {
 func (*GetPortfolioHistoryResponse) ProtoMessage() {}
 
 func (x *GetPortfolioHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[12]
+	mi := &file_portfolio_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -682,7 +630,7 @@ func (x *GetPortfolioHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPortfolioHistoryResponse.ProtoReflect.Descriptor instead.
 func (*GetPortfolioHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{12}
+	return file_portfolio_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetPortfolioHistoryResponse) GetHistory() map[string]*PricePoints {
@@ -701,7 +649,7 @@ type GetPublicPortfoliosRequest struct {
 
 func (x *GetPublicPortfoliosRequest) Reset() {
 	*x = GetPublicPortfoliosRequest{}
-	mi := &file_proto_portfolio_proto_msgTypes[13]
+	mi := &file_portfolio_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -713,7 +661,7 @@ func (x *GetPublicPortfoliosRequest) String() string {
 func (*GetPublicPortfoliosRequest) ProtoMessage() {}
 
 func (x *GetPublicPortfoliosRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[13]
+	mi := &file_portfolio_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -726,7 +674,7 @@ func (x *GetPublicPortfoliosRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPublicPortfoliosRequest.ProtoReflect.Descriptor instead.
 func (*GetPublicPortfoliosRequest) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{13}
+	return file_portfolio_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetPublicPortfoliosRequest) GetUserId() int32 {
@@ -747,7 +695,7 @@ type PublicPortfolio struct {
 
 func (x *PublicPortfolio) Reset() {
 	*x = PublicPortfolio{}
-	mi := &file_proto_portfolio_proto_msgTypes[14]
+	mi := &file_portfolio_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -759,7 +707,7 @@ func (x *PublicPortfolio) String() string {
 func (*PublicPortfolio) ProtoMessage() {}
 
 func (x *PublicPortfolio) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[14]
+	mi := &file_portfolio_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -772,7 +720,7 @@ func (x *PublicPortfolio) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublicPortfolio.ProtoReflect.Descriptor instead.
 func (*PublicPortfolio) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{14}
+	return file_portfolio_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PublicPortfolio) GetPortfolioId() int32 {
@@ -805,7 +753,7 @@ type GetPublicPortfoliosResponse struct {
 
 func (x *GetPublicPortfoliosResponse) Reset() {
 	*x = GetPublicPortfoliosResponse{}
-	mi := &file_proto_portfolio_proto_msgTypes[15]
+	mi := &file_portfolio_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -817,7 +765,7 @@ func (x *GetPublicPortfoliosResponse) String() string {
 func (*GetPublicPortfoliosResponse) ProtoMessage() {}
 
 func (x *GetPublicPortfoliosResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_portfolio_proto_msgTypes[15]
+	mi := &file_portfolio_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -830,7 +778,7 @@ func (x *GetPublicPortfoliosResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPublicPortfoliosResponse.ProtoReflect.Descriptor instead.
 func (*GetPublicPortfoliosResponse) Descriptor() ([]byte, []int) {
-	return file_proto_portfolio_proto_rawDescGZIP(), []int{15}
+	return file_portfolio_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetPublicPortfoliosResponse) GetPortfolios() []*PublicPortfolio {
@@ -840,15 +788,186 @@ func (x *GetPublicPortfoliosResponse) GetPortfolios() []*PublicPortfolio {
 	return nil
 }
 
-var File_proto_portfolio_proto protoreflect.FileDescriptor
+type GetPortfolioProfitRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
 
-const file_proto_portfolio_proto_rawDesc = "" +
+func (x *GetPortfolioProfitRequest) Reset() {
+	*x = GetPortfolioProfitRequest{}
+	mi := &file_portfolio_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPortfolioProfitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPortfolioProfitRequest) ProtoMessage() {}
+
+func (x *GetPortfolioProfitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_portfolio_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPortfolioProfitRequest.ProtoReflect.Descriptor instead.
+func (*GetPortfolioProfitRequest) Descriptor() ([]byte, []int) {
+	return file_portfolio_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetPortfolioProfitRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type AssetProfit struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Symbol        string                 `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Amount        float64                `protobuf:"fixed64,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Invested      float64                `protobuf:"fixed64,3,opt,name=invested,proto3" json:"invested,omitempty"`
+	CurrentPrice  float64                `protobuf:"fixed64,4,opt,name=current_price,json=currentPrice,proto3" json:"current_price,omitempty"`
+	CurrentValue  float64                `protobuf:"fixed64,5,opt,name=current_value,json=currentValue,proto3" json:"current_value,omitempty"`
+	Profit        float64                `protobuf:"fixed64,6,opt,name=profit,proto3" json:"profit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssetProfit) Reset() {
+	*x = AssetProfit{}
+	mi := &file_portfolio_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssetProfit) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssetProfit) ProtoMessage() {}
+
+func (x *AssetProfit) ProtoReflect() protoreflect.Message {
+	mi := &file_portfolio_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssetProfit.ProtoReflect.Descriptor instead.
+func (*AssetProfit) Descriptor() ([]byte, []int) {
+	return file_portfolio_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *AssetProfit) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *AssetProfit) GetAmount() float64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *AssetProfit) GetInvested() float64 {
+	if x != nil {
+		return x.Invested
+	}
+	return 0
+}
+
+func (x *AssetProfit) GetCurrentPrice() float64 {
+	if x != nil {
+		return x.CurrentPrice
+	}
+	return 0
+}
+
+func (x *AssetProfit) GetCurrentValue() float64 {
+	if x != nil {
+		return x.CurrentValue
+	}
+	return 0
+}
+
+func (x *AssetProfit) GetProfit() float64 {
+	if x != nil {
+		return x.Profit
+	}
+	return 0
+}
+
+type GetPortfolioProfitResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Assets        []*AssetProfit         `protobuf:"bytes,1,rep,name=assets,proto3" json:"assets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPortfolioProfitResponse) Reset() {
+	*x = GetPortfolioProfitResponse{}
+	mi := &file_portfolio_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPortfolioProfitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPortfolioProfitResponse) ProtoMessage() {}
+
+func (x *GetPortfolioProfitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_portfolio_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPortfolioProfitResponse.ProtoReflect.Descriptor instead.
+func (*GetPortfolioProfitResponse) Descriptor() ([]byte, []int) {
+	return file_portfolio_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetPortfolioProfitResponse) GetAssets() []*AssetProfit {
+	if x != nil {
+		return x.Assets
+	}
+	return nil
+}
+
+var File_portfolio_proto protoreflect.FileDescriptor
+
+const file_portfolio_proto_rawDesc = "" +
 	"\n" +
-	"\x15proto/portfolio.proto\x12\tportfolio\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\x81\x01\n" +
-	"\x19CreateNewPortfolioRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x127\n" +
-	"\tis_public\x18\x03 \x01(\v2\x1a.google.protobuf.BoolValueR\bisPublic\"y\n" +
+	"\x0fportfolio.proto\x12\tportfolio\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/wrappers.proto\"h\n" +
+	"\x19CreateNewPortfolioRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
+	"\tis_public\x18\x02 \x01(\v2\x1a.google.protobuf.BoolValueR\bisPublic\"y\n" +
 	"\x1aCreateNewPortfolioResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x127\n" +
@@ -870,9 +989,7 @@ const file_proto_portfolio_proto_rawDesc = "" +
 	"\x10AllUserPortfolio\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x127\n" +
-	"\tis_public\x18\x03 \x01(\v2\x1a.google.protobuf.BoolValueR\bisPublic\"2\n" +
-	"\x17GetAllPortfoliosRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"W\n" +
+	"\tis_public\x18\x03 \x01(\v2\x1a.google.protobuf.BoolValueR\bisPublic\"W\n" +
 	"\x18GetAllPortfoliosResponse\x12;\n" +
 	"\n" +
 	"portfolios\x18\x01 \x03(\v2\x1b.portfolio.AllUserPortfolioR\n" +
@@ -884,7 +1001,7 @@ const file_proto_portfolio_proto_rawDesc = "" +
 	"\n" +
 	"PricePoint\x12\x1c\n" +
 	"\ttimestamp\x18\x01 \x01(\tR\ttimestamp\x12\x14\n" +
-	"\x05price\x18\x02 \x01(\x01R\x05price\"<\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value\"<\n" +
 	"\vPricePoints\x12-\n" +
 	"\x06points\x18\x01 \x03(\v2\x15.portfolio.PricePointR\x06points\"\xc0\x01\n" +
 	"\x1bGetPortfolioHistoryResponse\x12M\n" +
@@ -904,30 +1021,42 @@ const file_proto_portfolio_proto_rawDesc = "" +
 	"\x1bGetPublicPortfoliosResponse\x12:\n" +
 	"\n" +
 	"portfolios\x18\x01 \x03(\v2\x1a.portfolio.PublicPortfolioR\n" +
-	"portfolios2\x8b\a\n" +
+	"portfolios\"+\n" +
+	"\x19GetPortfolioProfitRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xbb\x01\n" +
+	"\vAssetProfit\x12\x16\n" +
+	"\x06symbol\x18\x01 \x01(\tR\x06symbol\x12\x16\n" +
+	"\x06amount\x18\x02 \x01(\x01R\x06amount\x12\x1a\n" +
+	"\binvested\x18\x03 \x01(\x01R\binvested\x12#\n" +
+	"\rcurrent_price\x18\x04 \x01(\x01R\fcurrentPrice\x12#\n" +
+	"\rcurrent_value\x18\x05 \x01(\x01R\fcurrentValue\x12\x16\n" +
+	"\x06profit\x18\x06 \x01(\x01R\x06profit\"L\n" +
+	"\x1aGetPortfolioProfitResponse\x12.\n" +
+	"\x06assets\x18\x01 \x03(\v2\x16.portfolio.AssetProfitR\x06assets2\x84\b\n" +
 	"\x10PortfolioService\x12y\n" +
 	"\x12CreateNewPortfolio\x12$.portfolio.CreateNewPortfolioRequest\x1a%.portfolio.CreateNewPortfolioResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/portfolios\x12\x89\x01\n" +
 	"\x17GetPortfolioContentById\x12).portfolio.GetPortfolioContentByIdRequest\x1a*.portfolio.GetPortfolioContentByIdResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/portfolio/{id}\x12q\n" +
 	"\vUpsertAsset\x12\x1d.portfolio.UpsertAssetRequest\x1a\x16.google.protobuf.Empty\"+\x82\xd3\xe4\x93\x02%:\x01*\" /portfolios/{portfolio_id}/asset\x12w\n" +
-	"\vDeleteAsset\x12\x1d.portfolio.DeleteAssetRequest\x1a\x16.google.protobuf.Empty\"1\x82\xd3\xe4\x93\x02+*)/portfolios/{portfolio_id}/asset/{symbol}\x12p\n" +
-	"\x10GetAllPortfolios\x12\".portfolio.GetAllPortfoliosRequest\x1a#.portfolio.GetAllPortfoliosResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/portfolios\x12\x85\x01\n" +
+	"\vDeleteAsset\x12\x1d.portfolio.DeleteAssetRequest\x1a\x16.google.protobuf.Empty\"1\x82\xd3\xe4\x93\x02+*)/portfolios/{portfolio_id}/asset/{symbol}\x12\x82\x01\n" +
+	"\x12GetPortfolioProfit\x12$.portfolio.GetPortfolioProfitRequest\x1a%.portfolio.GetPortfolioProfitResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/portfolios/{id}/profit\x12d\n" +
+	"\x10GetAllPortfolios\x12\x16.google.protobuf.Empty\x1a#.portfolio.GetAllPortfoliosResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/portfolios\x12\x85\x01\n" +
 	"\x13GetPortfolioHistory\x12%.portfolio.GetPortfolioHistoryRequest\x1a&.portfolio.GetPortfolioHistoryResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/portfolio/{id}/history\x12\x89\x01\n" +
 	"\x13GetPublicPortfolios\x12%.portfolio.GetPublicPortfoliosRequest\x1a&.portfolio.GetPublicPortfoliosResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/portfolio/public/{user_id}B#Z!portfolio-service/proto;portfoliob\x06proto3"
 
 var (
-	file_proto_portfolio_proto_rawDescOnce sync.Once
-	file_proto_portfolio_proto_rawDescData []byte
+	file_portfolio_proto_rawDescOnce sync.Once
+	file_portfolio_proto_rawDescData []byte
 )
 
-func file_proto_portfolio_proto_rawDescGZIP() []byte {
-	file_proto_portfolio_proto_rawDescOnce.Do(func() {
-		file_proto_portfolio_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_portfolio_proto_rawDesc), len(file_proto_portfolio_proto_rawDesc)))
+func file_portfolio_proto_rawDescGZIP() []byte {
+	file_portfolio_proto_rawDescOnce.Do(func() {
+		file_portfolio_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_portfolio_proto_rawDesc), len(file_portfolio_proto_rawDesc)))
 	})
-	return file_proto_portfolio_proto_rawDescData
+	return file_portfolio_proto_rawDescData
 }
 
-var file_proto_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
-var file_proto_portfolio_proto_goTypes = []any{
+var file_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_portfolio_proto_goTypes = []any{
 	(*CreateNewPortfolioRequest)(nil),       // 0: portfolio.CreateNewPortfolioRequest
 	(*CreateNewPortfolioResponse)(nil),      // 1: portfolio.CreateNewPortfolioResponse
 	(*GetPortfolioContentByIdRequest)(nil),  // 2: portfolio.GetPortfolioContentByIdRequest
@@ -935,73 +1064,78 @@ var file_proto_portfolio_proto_goTypes = []any{
 	(*UpsertAssetRequest)(nil),              // 4: portfolio.UpsertAssetRequest
 	(*DeleteAssetRequest)(nil),              // 5: portfolio.DeleteAssetRequest
 	(*AllUserPortfolio)(nil),                // 6: portfolio.AllUserPortfolio
-	(*GetAllPortfoliosRequest)(nil),         // 7: portfolio.GetAllPortfoliosRequest
-	(*GetAllPortfoliosResponse)(nil),        // 8: portfolio.GetAllPortfoliosResponse
-	(*GetPortfolioHistoryRequest)(nil),      // 9: portfolio.GetPortfolioHistoryRequest
-	(*PricePoint)(nil),                      // 10: portfolio.PricePoint
-	(*PricePoints)(nil),                     // 11: portfolio.PricePoints
-	(*GetPortfolioHistoryResponse)(nil),     // 12: portfolio.GetPortfolioHistoryResponse
-	(*GetPublicPortfoliosRequest)(nil),      // 13: portfolio.GetPublicPortfoliosRequest
-	(*PublicPortfolio)(nil),                 // 14: portfolio.PublicPortfolio
-	(*GetPublicPortfoliosResponse)(nil),     // 15: portfolio.GetPublicPortfoliosResponse
-	nil,                                     // 16: portfolio.GetPortfolioContentByIdResponse.AssetsEntry
-	nil,                                     // 17: portfolio.GetPortfolioHistoryResponse.HistoryEntry
-	nil,                                     // 18: portfolio.PublicPortfolio.AssetsEntry
-	(*wrapperspb.BoolValue)(nil),            // 19: google.protobuf.BoolValue
-	(*emptypb.Empty)(nil),                   // 20: google.protobuf.Empty
+	(*GetAllPortfoliosResponse)(nil),        // 7: portfolio.GetAllPortfoliosResponse
+	(*GetPortfolioHistoryRequest)(nil),      // 8: portfolio.GetPortfolioHistoryRequest
+	(*PricePoint)(nil),                      // 9: portfolio.PricePoint
+	(*PricePoints)(nil),                     // 10: portfolio.PricePoints
+	(*GetPortfolioHistoryResponse)(nil),     // 11: portfolio.GetPortfolioHistoryResponse
+	(*GetPublicPortfoliosRequest)(nil),      // 12: portfolio.GetPublicPortfoliosRequest
+	(*PublicPortfolio)(nil),                 // 13: portfolio.PublicPortfolio
+	(*GetPublicPortfoliosResponse)(nil),     // 14: portfolio.GetPublicPortfoliosResponse
+	(*GetPortfolioProfitRequest)(nil),       // 15: portfolio.GetPortfolioProfitRequest
+	(*AssetProfit)(nil),                     // 16: portfolio.AssetProfit
+	(*GetPortfolioProfitResponse)(nil),      // 17: portfolio.GetPortfolioProfitResponse
+	nil,                                     // 18: portfolio.GetPortfolioContentByIdResponse.AssetsEntry
+	nil,                                     // 19: portfolio.GetPortfolioHistoryResponse.HistoryEntry
+	nil,                                     // 20: portfolio.PublicPortfolio.AssetsEntry
+	(*wrapperspb.BoolValue)(nil),            // 21: google.protobuf.BoolValue
+	(*emptypb.Empty)(nil),                   // 22: google.protobuf.Empty
 }
-var file_proto_portfolio_proto_depIdxs = []int32{
-	19, // 0: portfolio.CreateNewPortfolioRequest.is_public:type_name -> google.protobuf.BoolValue
-	19, // 1: portfolio.CreateNewPortfolioResponse.is_public:type_name -> google.protobuf.BoolValue
-	16, // 2: portfolio.GetPortfolioContentByIdResponse.assets:type_name -> portfolio.GetPortfolioContentByIdResponse.AssetsEntry
-	19, // 3: portfolio.AllUserPortfolio.is_public:type_name -> google.protobuf.BoolValue
+var file_portfolio_proto_depIdxs = []int32{
+	21, // 0: portfolio.CreateNewPortfolioRequest.is_public:type_name -> google.protobuf.BoolValue
+	21, // 1: portfolio.CreateNewPortfolioResponse.is_public:type_name -> google.protobuf.BoolValue
+	18, // 2: portfolio.GetPortfolioContentByIdResponse.assets:type_name -> portfolio.GetPortfolioContentByIdResponse.AssetsEntry
+	21, // 3: portfolio.AllUserPortfolio.is_public:type_name -> google.protobuf.BoolValue
 	6,  // 4: portfolio.GetAllPortfoliosResponse.portfolios:type_name -> portfolio.AllUserPortfolio
-	10, // 5: portfolio.PricePoints.points:type_name -> portfolio.PricePoint
-	17, // 6: portfolio.GetPortfolioHistoryResponse.history:type_name -> portfolio.GetPortfolioHistoryResponse.HistoryEntry
-	18, // 7: portfolio.PublicPortfolio.assets:type_name -> portfolio.PublicPortfolio.AssetsEntry
-	14, // 8: portfolio.GetPublicPortfoliosResponse.portfolios:type_name -> portfolio.PublicPortfolio
-	11, // 9: portfolio.GetPortfolioHistoryResponse.HistoryEntry.value:type_name -> portfolio.PricePoints
-	0,  // 10: portfolio.PortfolioService.CreateNewPortfolio:input_type -> portfolio.CreateNewPortfolioRequest
-	2,  // 11: portfolio.PortfolioService.GetPortfolioContentById:input_type -> portfolio.GetPortfolioContentByIdRequest
-	4,  // 12: portfolio.PortfolioService.UpsertAsset:input_type -> portfolio.UpsertAssetRequest
-	5,  // 13: portfolio.PortfolioService.DeleteAsset:input_type -> portfolio.DeleteAssetRequest
-	7,  // 14: portfolio.PortfolioService.GetAllPortfolios:input_type -> portfolio.GetAllPortfoliosRequest
-	9,  // 15: portfolio.PortfolioService.GetPortfolioHistory:input_type -> portfolio.GetPortfolioHistoryRequest
-	13, // 16: portfolio.PortfolioService.GetPublicPortfolios:input_type -> portfolio.GetPublicPortfoliosRequest
-	1,  // 17: portfolio.PortfolioService.CreateNewPortfolio:output_type -> portfolio.CreateNewPortfolioResponse
-	3,  // 18: portfolio.PortfolioService.GetPortfolioContentById:output_type -> portfolio.GetPortfolioContentByIdResponse
-	20, // 19: portfolio.PortfolioService.UpsertAsset:output_type -> google.protobuf.Empty
-	20, // 20: portfolio.PortfolioService.DeleteAsset:output_type -> google.protobuf.Empty
-	8,  // 21: portfolio.PortfolioService.GetAllPortfolios:output_type -> portfolio.GetAllPortfoliosResponse
-	12, // 22: portfolio.PortfolioService.GetPortfolioHistory:output_type -> portfolio.GetPortfolioHistoryResponse
-	15, // 23: portfolio.PortfolioService.GetPublicPortfolios:output_type -> portfolio.GetPublicPortfoliosResponse
-	17, // [17:24] is the sub-list for method output_type
-	10, // [10:17] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	9,  // 5: portfolio.PricePoints.points:type_name -> portfolio.PricePoint
+	19, // 6: portfolio.GetPortfolioHistoryResponse.history:type_name -> portfolio.GetPortfolioHistoryResponse.HistoryEntry
+	20, // 7: portfolio.PublicPortfolio.assets:type_name -> portfolio.PublicPortfolio.AssetsEntry
+	13, // 8: portfolio.GetPublicPortfoliosResponse.portfolios:type_name -> portfolio.PublicPortfolio
+	16, // 9: portfolio.GetPortfolioProfitResponse.assets:type_name -> portfolio.AssetProfit
+	10, // 10: portfolio.GetPortfolioHistoryResponse.HistoryEntry.value:type_name -> portfolio.PricePoints
+	0,  // 11: portfolio.PortfolioService.CreateNewPortfolio:input_type -> portfolio.CreateNewPortfolioRequest
+	2,  // 12: portfolio.PortfolioService.GetPortfolioContentById:input_type -> portfolio.GetPortfolioContentByIdRequest
+	4,  // 13: portfolio.PortfolioService.UpsertAsset:input_type -> portfolio.UpsertAssetRequest
+	5,  // 14: portfolio.PortfolioService.DeleteAsset:input_type -> portfolio.DeleteAssetRequest
+	15, // 15: portfolio.PortfolioService.GetPortfolioProfit:input_type -> portfolio.GetPortfolioProfitRequest
+	22, // 16: portfolio.PortfolioService.GetAllPortfolios:input_type -> google.protobuf.Empty
+	8,  // 17: portfolio.PortfolioService.GetPortfolioHistory:input_type -> portfolio.GetPortfolioHistoryRequest
+	12, // 18: portfolio.PortfolioService.GetPublicPortfolios:input_type -> portfolio.GetPublicPortfoliosRequest
+	1,  // 19: portfolio.PortfolioService.CreateNewPortfolio:output_type -> portfolio.CreateNewPortfolioResponse
+	3,  // 20: portfolio.PortfolioService.GetPortfolioContentById:output_type -> portfolio.GetPortfolioContentByIdResponse
+	22, // 21: portfolio.PortfolioService.UpsertAsset:output_type -> google.protobuf.Empty
+	22, // 22: portfolio.PortfolioService.DeleteAsset:output_type -> google.protobuf.Empty
+	17, // 23: portfolio.PortfolioService.GetPortfolioProfit:output_type -> portfolio.GetPortfolioProfitResponse
+	7,  // 24: portfolio.PortfolioService.GetAllPortfolios:output_type -> portfolio.GetAllPortfoliosResponse
+	11, // 25: portfolio.PortfolioService.GetPortfolioHistory:output_type -> portfolio.GetPortfolioHistoryResponse
+	14, // 26: portfolio.PortfolioService.GetPublicPortfolios:output_type -> portfolio.GetPublicPortfoliosResponse
+	19, // [19:27] is the sub-list for method output_type
+	11, // [11:19] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
-func init() { file_proto_portfolio_proto_init() }
-func file_proto_portfolio_proto_init() {
-	if File_proto_portfolio_proto != nil {
+func init() { file_portfolio_proto_init() }
+func file_portfolio_proto_init() {
+	if File_portfolio_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_portfolio_proto_rawDesc), len(file_proto_portfolio_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_portfolio_proto_rawDesc), len(file_portfolio_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_portfolio_proto_goTypes,
-		DependencyIndexes: file_proto_portfolio_proto_depIdxs,
-		MessageInfos:      file_proto_portfolio_proto_msgTypes,
+		GoTypes:           file_portfolio_proto_goTypes,
+		DependencyIndexes: file_portfolio_proto_depIdxs,
+		MessageInfos:      file_portfolio_proto_msgTypes,
 	}.Build()
-	File_proto_portfolio_proto = out.File
-	file_proto_portfolio_proto_goTypes = nil
-	file_proto_portfolio_proto_depIdxs = nil
+	File_portfolio_proto = out.File
+	file_portfolio_proto_goTypes = nil
+	file_portfolio_proto_depIdxs = nil
 }

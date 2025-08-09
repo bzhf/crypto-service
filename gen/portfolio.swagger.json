@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "proto/portfolio.proto",
+    "title": "portfolio.proto",
     "version": "version not set"
   },
   "tags": [
@@ -140,15 +140,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
         "tags": [
           "PortfolioService"
         ]
@@ -177,6 +168,37 @@
             "schema": {
               "$ref": "#/definitions/portfolioCreateNewPortfolioRequest"
             }
+          }
+        ],
+        "tags": [
+          "PortfolioService"
+        ]
+      }
+    },
+    "/portfolios/{id}/profit": {
+      "get": {
+        "operationId": "PortfolioService_GetPortfolioProfit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/portfolioGetPortfolioProfitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
           }
         ],
         "tags": [
@@ -291,13 +313,37 @@
         }
       }
     },
+    "portfolioAssetProfit": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "invested": {
+          "type": "number",
+          "format": "double"
+        },
+        "currentPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "currentValue": {
+          "type": "number",
+          "format": "double"
+        },
+        "profit": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "portfolioCreateNewPortfolioRequest": {
       "type": "object",
       "properties": {
-        "userId": {
-          "type": "integer",
-          "format": "int32"
-        },
         "name": {
           "type": "string"
         },
@@ -356,6 +402,18 @@
         }
       }
     },
+    "portfolioGetPortfolioProfitResponse": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/portfolioAssetProfit"
+          }
+        }
+      }
+    },
     "portfolioGetPublicPortfoliosResponse": {
       "type": "object",
       "properties": {
@@ -374,7 +432,7 @@
         "timestamp": {
           "type": "string"
         },
-        "price": {
+        "value": {
           "type": "number",
           "format": "double"
         }

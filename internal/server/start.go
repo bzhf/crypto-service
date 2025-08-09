@@ -4,37 +4,62 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"os"
-	"os/signal"
+	"net/http"
 	gen "portfolio-service/gen"
 	"portfolio-service/internal/controller"
 	"portfolio-service/internal/infrastructure/logger"
+	"portfolio-service/internal/server/middleware"
 	"portfolio-service/internal/usecase"
-	"syscall"
 
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 )
 
-func Start(ctx context.Context, uc usecase.PortfolioInterface, port string) error {
-	GrpcServer := grpc.NewServer()
-	Controller := controller.NewController(uc)
-	gen.RegisterPortfolioServiceServer(GrpcServer, Controller)
-
-	const op = "server.Start"
+func StartGRPC(ctx context.Context, uc usecase.PortfolioInterface, port string) (*grpc.Server, error) {
 	l := logger.FromContext(ctx)
-	l.Infow("grpc server starting", "port:", port)
-	listener, err := net.Listen("tcp", port)
+	l.Infow("starting gRPC server", "port", port)
+
+	server := grpc.NewServer(grpc.UnaryInterceptor(middleware.UnaryInterceptor()))
+	handler := controller.NewController(uc)
+	gen.RegisterPortfolioServiceServer(server, handler)
+
+	listener, err := net.Listen("tcp", ":"+port)
 	if err != nil {
-		return fmt.Errorf("%s: %w", op, err)
+		return nil, fmt.Errorf("grpc listen failed: %w", err)
 	}
-	l.Info("grpc server is running")
-	if err := GrpcServer.Serve(listener); err != nil {
-		return fmt.Errorf("%s: %w", op, err)
+
+	go func() {
+		if err := server.Serve(listener); err != nil {
+			l.Errorw("grpc serve failed", "error", err)
+		}
+	}()
+
+	l.Infow("gRPC server started")
+	return server, nil
+}
+
+func StartRESTProxy(ctx context.Context, grpcPort string, httpPort string) (*http.Server, error) {
+	l := logger.FromContext(ctx)
+	l.Infow("starting REST proxy", "port", ":"+httpPort)
+
+	mux := runtime.NewServeMux()
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	err := gen.RegisterPortfolioServiceHandlerFromEndpoint(ctx, mux, grpcPort, opts)
+	if err != nil {
+		return nil, fmt.Errorf("register grpc-gateway handler failed: %w", err)
 	}
-	stop := make(chan os.Signal, 1)
-	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
-	sig := <-stop
-	GrpcServer.GracefulStop()
-	logger.FromContext(ctx).Infow("app stopped gracefully", "signal:", sig)
-	return nil
+
+	srv := &http.Server{
+		Addr:    ":" + httpPort,
+		Handler: mux,
+	}
+
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			l.Errorw("REST proxy serve failed", "error", err)
+		}
+	}()
+
+	l.Infow("REST proxy started")
+	return srv, nil
 }

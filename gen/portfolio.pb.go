@@ -7,7 +7,6 @@
 package portfolio
 
 import (
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -964,7 +963,7 @@ var File_portfolio_proto protoreflect.FileDescriptor
 
 const file_portfolio_proto_rawDesc = "" +
 	"\n" +
-	"\x0fportfolio.proto\x12\tportfolio\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/wrappers.proto\"h\n" +
+	"\x0fportfolio.proto\x12\tportfolio\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"h\n" +
 	"\x19CreateNewPortfolioRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
 	"\tis_public\x18\x02 \x01(\v2\x1a.google.protobuf.BoolValueR\bisPublic\"y\n" +
@@ -1032,16 +1031,16 @@ const file_portfolio_proto_rawDesc = "" +
 	"\rcurrent_value\x18\x05 \x01(\x01R\fcurrentValue\x12\x16\n" +
 	"\x06profit\x18\x06 \x01(\x01R\x06profit\"L\n" +
 	"\x1aGetPortfolioProfitResponse\x12.\n" +
-	"\x06assets\x18\x01 \x03(\v2\x16.portfolio.AssetProfitR\x06assets2\x84\b\n" +
-	"\x10PortfolioService\x12y\n" +
-	"\x12CreateNewPortfolio\x12$.portfolio.CreateNewPortfolioRequest\x1a%.portfolio.CreateNewPortfolioResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/portfolios\x12\x89\x01\n" +
-	"\x17GetPortfolioContentById\x12).portfolio.GetPortfolioContentByIdRequest\x1a*.portfolio.GetPortfolioContentByIdResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/portfolio/{id}\x12q\n" +
-	"\vUpsertAsset\x12\x1d.portfolio.UpsertAssetRequest\x1a\x16.google.protobuf.Empty\"+\x82\xd3\xe4\x93\x02%:\x01*\" /portfolios/{portfolio_id}/asset\x12w\n" +
-	"\vDeleteAsset\x12\x1d.portfolio.DeleteAssetRequest\x1a\x16.google.protobuf.Empty\"1\x82\xd3\xe4\x93\x02+*)/portfolios/{portfolio_id}/asset/{symbol}\x12\x82\x01\n" +
-	"\x12GetPortfolioProfit\x12$.portfolio.GetPortfolioProfitRequest\x1a%.portfolio.GetPortfolioProfitResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/portfolios/{id}/profit\x12d\n" +
-	"\x10GetAllPortfolios\x12\x16.google.protobuf.Empty\x1a#.portfolio.GetAllPortfoliosResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/portfolios\x12\x85\x01\n" +
-	"\x13GetPortfolioHistory\x12%.portfolio.GetPortfolioHistoryRequest\x1a&.portfolio.GetPortfolioHistoryResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/portfolio/{id}/history\x12\x89\x01\n" +
-	"\x13GetPublicPortfolios\x12%.portfolio.GetPublicPortfoliosRequest\x1a&.portfolio.GetPublicPortfoliosResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/portfolio/public/{user_id}B#Z!portfolio-service/proto;portfoliob\x06proto3"
+	"\x06assets\x18\x01 \x03(\v2\x16.portfolio.AssetProfitR\x06assets2\xf3\x05\n" +
+	"\x10PortfolioService\x12a\n" +
+	"\x12CreateNewPortfolio\x12$.portfolio.CreateNewPortfolioRequest\x1a%.portfolio.CreateNewPortfolioResponse\x12p\n" +
+	"\x17GetPortfolioContentById\x12).portfolio.GetPortfolioContentByIdRequest\x1a*.portfolio.GetPortfolioContentByIdResponse\x12D\n" +
+	"\vUpsertAsset\x12\x1d.portfolio.UpsertAssetRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
+	"\vDeleteAsset\x12\x1d.portfolio.DeleteAssetRequest\x1a\x16.google.protobuf.Empty\x12a\n" +
+	"\x12GetPortfolioProfit\x12$.portfolio.GetPortfolioProfitRequest\x1a%.portfolio.GetPortfolioProfitResponse\x12O\n" +
+	"\x10GetAllPortfolios\x12\x16.google.protobuf.Empty\x1a#.portfolio.GetAllPortfoliosResponse\x12d\n" +
+	"\x13GetPortfolioHistory\x12%.portfolio.GetPortfolioHistoryRequest\x1a&.portfolio.GetPortfolioHistoryResponse\x12d\n" +
+	"\x13GetPublicPortfolios\x12%.portfolio.GetPublicPortfoliosRequest\x1a&.portfolio.GetPublicPortfoliosResponseB#Z!portfolio-service/proto;portfoliob\x06proto3"
 
 var (
 	file_portfolio_proto_rawDescOnce sync.Once

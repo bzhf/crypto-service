@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
-import "google/api/annotations.proto";
 import "google/protobuf/wrappers.proto";
 
 package portfolio;
@@ -9,68 +8,25 @@ package portfolio;
 option go_package = "portfolio-service/proto;portfolio";
 
 service PortfolioService {
-  rpc CreateNewPortfolio (CreateNewPortfolioRequest) returns (CreateNewPortfolioResponse) {
-    option (google.api.http) = {
-      post: "/portfolios"
-      body: "*"
-    };
-  };
-
-  rpc GetPortfolioContentById (GetPortfolioContentByIdRequest) returns (GetPortfolioContentByIdResponse) {
-    option (google.api.http) = {
-      get: "/portfolio/{id}"
-    };
-  };
-
-  rpc UpsertAsset (UpsertAssetRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      post: "/portfolios/{portfolio_id}/asset"
-      body: "*"
-    };
-  };
-
-  rpc DeleteAsset (DeleteAssetRequest) returns (google.protobuf.Empty) {
-	option (google.api.http) = {
-	  delete: "/portfolios/{portfolio_id}/asset/{symbol}"
-	};
-  };
-  
-  rpc GetPortfolioProfit(GetPortfolioProfitRequest) returns (GetPortfolioProfitResponse){
-    option (google.api.http) = {
-      get: "/portfolios/{id}/profit"
-    };
-  };
-
-  rpc GetAllPortfolios (google.protobuf.Empty) returns (GetAllPortfoliosResponse) {
-    option (google.api.http) = {
-      get: "/portfolios"
-    };
-  };
-
-  rpc GetPortfolioHistory (GetPortfolioHistoryRequest) returns (GetPortfolioHistoryResponse) {
-    option (google.api.http) = {
-      get: "/portfolio/{id}/history"
-    };
-  };
-
-  rpc GetPublicPortfolios (GetPublicPortfoliosRequest) returns (GetPublicPortfoliosResponse) {
-    option (google.api.http) = {
-      get: "/portfolio/public/{user_id}"
-    };
-  };
+  rpc CreateNewPortfolio(CreateNewPortfolioRequest) returns (CreateNewPortfolioResponse);
+  rpc GetPortfolioContentById(GetPortfolioContentByIdRequest) returns (GetPortfolioContentByIdResponse);
+  rpc UpsertAsset(UpsertAssetRequest) returns (google.protobuf.Empty);
+  rpc DeleteAsset(DeleteAssetRequest) returns (google.protobuf.Empty);
+  rpc GetPortfolioProfit(GetPortfolioProfitRequest) returns (GetPortfolioProfitResponse);
+  rpc GetAllPortfolios(google.protobuf.Empty) returns (GetAllPortfoliosResponse);
+  rpc GetPortfolioHistory(GetPortfolioHistoryRequest) returns (GetPortfolioHistoryResponse);
+  rpc GetPublicPortfolios(GetPublicPortfoliosRequest) returns (GetPublicPortfoliosResponse);
 }
-
-
 
 message CreateNewPortfolioRequest {
   string name = 1;
-  google.protobuf.BoolValue  is_public = 2;
+  google.protobuf.BoolValue is_public = 2;
 }
 
 message CreateNewPortfolioResponse {
   int32 id = 1;
   string name = 2;
-  google.protobuf.BoolValue  is_public = 3;
+  google.protobuf.BoolValue is_public = 3;
 }
 
 message GetPortfolioContentByIdRequest {
@@ -97,7 +53,6 @@ message AllUserPortfolio {
   string name = 2;
   google.protobuf.BoolValue is_public = 3;
 }
-
 
 message GetAllPortfoliosResponse {
   repeated AllUserPortfolio portfolios = 1;

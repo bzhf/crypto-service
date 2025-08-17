@@ -15,7 +15,6 @@ import (
 	"portfolio-service/internal/server"
 	"portfolio-service/internal/usecase"
 	"syscall"
-	"time"
 )
 
 func main() {
@@ -62,22 +61,12 @@ func main() {
 	if err != nil {
 		log.Fatalw("failed to start gRPC server", "error", err)
 	}
-	restServer, err := server.StartRESTProxy(ctx, config.AppConfig.GrpcPort, config.AppConfig.RestPort)
-	if err != nil {
-		log.Fatalw("failed to start REST proxy", "error", err)
-	}
+
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM)
 	sig := <-stop
 	log.Infow("shutdown signal received", "signal", sig)
-	log.Info("stopping servers...")
-
 	grpcServer.GracefulStop()
-	shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-	if err := restServer.Shutdown(shutdownCtx); err != nil {
-		log.Errorw("rest proxy shutdown failed", "error", err)
-	}
-
-	log.Info("servers stopped gracefully")
+	log.Info("server stopped gracefully")
 }

@@ -3,18 +3,13 @@ package middleware
 import (
 	"context"
 	"errors"
-	"fmt"
-	"strings"
+	"strconv"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
-
-	"github.com/golang-jwt/jwt"
 )
 
-const userIDKey = "userID"
-
-var jwtSecret = []byte("super-secret")
+const userIDKey = "user_id"
 
 func UnaryInterceptor() grpc.UnaryServerInterceptor {
 	return func(
@@ -28,39 +23,26 @@ func UnaryInterceptor() grpc.UnaryServerInterceptor {
 			return nil, errors.New("missing metadata")
 		}
 
-		authHeader := md.Get("authorization")
-		if len(authHeader) == 0 {
-			return nil, errors.New("missing authorization header")
+		userIDs := md.Get(userIDKey)
+		if len(userIDs) == 0 {
+			return nil, errors.New("missing user_id in metadata")
 		}
 
-		tokenStr := strings.TrimPrefix(authHeader[0], "Bearer ")
-		claims := jwt.MapClaims{}
-
-		token, err := jwt.ParseWithClaims(tokenStr, claims, func(t *jwt.Token) (any, error) {
-			return jwtSecret, nil
-		})
-		if err != nil || !token.Valid {
-			return nil, fmt.Errorf("invalid token: %w", err)
+		userID, err := strconv.Atoi(userIDs[0])
+		if err != nil {
+			return nil, errors.New("invalid user_id format, expected int")
 		}
 
-		userIDFloat, ok := claims["user_id"].(float64)
-		if !ok {
-			return nil, errors.New("invalid user_id in token")
-		}
-		userID := int(userIDFloat)
-
-		// Добавляем userID в context
 		ctx = context.WithValue(ctx, userIDKey, userID)
 
 		return handler(ctx, req)
 	}
 }
 
-// GetUserID извлекает userID из context
 func GetUserID(ctx context.Context) (int, error) {
 	id, ok := ctx.Value(userIDKey).(int)
 	if !ok {
-		return 0, errors.New("userID not found in context")
+		return 0, errors.New("user_id not found in context")
 	}
 	return id, nil
 }

@@ -4,14 +4,13 @@ import (
 	"context"
 	portfolio "portfolio-service/gen"
 	"portfolio-service/internal/entity"
-	"portfolio-service/internal/repository"
 )
 
 type PortfolioUsecase struct {
-	repo *repository.PortfolioRepository
+	repo PortfolioInterface
 }
 
-func NewPortfolioUsecase(repo *repository.PortfolioRepository) *PortfolioUsecase {
+func NewPortfolioUsecase(repo PortfolioInterface) PortfolioInterface {
 	return &PortfolioUsecase{repo: repo}
 }
 

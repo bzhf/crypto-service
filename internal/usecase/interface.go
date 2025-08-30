@@ -10,7 +10,7 @@ type PortfolioUsecase struct {
 	repo PortfolioInterface
 }
 
-func NewPortfolioUsecase(repo PortfolioInterface) PortfolioInterface {
+func NewPortfolioUsecase(repo PortfolioInterface) *PortfolioUsecase {
 	return &PortfolioUsecase{repo: repo}
 }
 
